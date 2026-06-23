@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Admit Card - AssamJobs247</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0b0e1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        .page-title {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 800;
+            color: #facc15;
+            border-left: 6px solid #facc15;
+            padding-left: 18px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(250, 204, 21, 0.15);
+        }
+
+        /* ===== ADMIT CARD GRID ===== */
+        .admit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 10px 0 20px 0;
+        }
+
+        .admit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 24px 22px;
+            border: 1px solid rgba(250, 204, 21, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .admit-card:hover {
+            transform: translateY(-8px);
+            border-color: #facc15;
+            box-shadow: 0 12px 40px rgba(250, 204, 21, 0.15);
+        }
+
+        .admit-card h3 {
+            color: #facc15;
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-weight: 700;
+            margin-bottom: 18px;
+            border-left: 4px solid #facc15;
+            padding-left: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admit-card h3 i {
+            font-size: 1.6rem;
+        }
+
+        .admit-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .admit-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .admit-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .admit-card ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: clamp(14px, 1.4vw, 16px);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            padding: 2px 0;
+        }
+
+        .admit-card ul li a:hover {
+            color: #facc15;
+            transform: translateX(6px);
+        }
+
+        .admit-card ul li a .icon {
+            font-size: 1.2rem;
+            width: 28px;
+            text-align: center;
+            color: #facc15;
+            flex-shrink: 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 30px;
+            margin-left: auto;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-available {
+            background: rgba(46, 125, 50, 0.25);
+            color: #81c784;
+            border: 1px solid rgba(46, 125, 50, 0.3);
+        }
+
+        .status-pending {
+            background: rgba(230, 81, 0, 0.2);
+            color: #ffab40;
+            border: 1px solid rgba(230, 81, 0, 0.25);
+        }
+
+        .status-upcoming {
+            background: rgba(13, 71, 161, 0.25);
+            color: #64b5f6;
+            border: 1px solid rgba(13, 71, 161, 0.3);
+        }
+
+        /* ===== DISCLAIMER ===== */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 14px 20px;
+            background: rgba(255, 243, 224, 0.08);
+            border-radius: 16px;
+            border-left: 4px solid #facc15;
+            text-align: center;
+            font-size: clamp(12px, 1.2vw, 14px);
+            color: #94a3b8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .admit-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
+            .page-title {
+                font-size: 28px;
+            }
+            .admit-card {
+                padding: 18px 16px;
+            }
+            .admit-card h3 {
+                font-size: 18px;
+            }
+            .admit-card ul li a {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+            .admit-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .page-title {
+                font-size: 22px;
+                padding-left: 12px;
+                border-left-width: 4px;
+            }
+            .admit-card {
+                padding: 16px 14px;
+                border-radius: 18px;
+            }
+            .admit-card h3 {
+                font-size: 16px;
+            }
+            .admit-card ul li a {
+                font-size: 12px;
+                gap: 8px;
+            }
+            .admit-card ul li a .icon {
+                font-size: 1rem;
+                width: 22px;
+            }
+            .status-badge {
+                font-size: 8px;
+                padding: 2px 8px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .admit-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .admit-card {
+                padding: 30px 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+
+        <!-- ===== PAGE TITLE ===== -->
+        <div class="page-title">
+            <i class="fas fa-id-card" style="color:#facc15; margin-right:12px;"></i> Admit Card Corner
+        </div>
+
+        <!-- ===== ADMIT CARD GRID ===== -->
+        <div class="admit-grid">
+
+            <!-- 1. Assam Board -->
+            <div class="admit-card">
+                <h3><i class="fas fa-book-open"></i> Assam Board</h3>
+                <ul>
+                    <li><a href="https://sebaonline.org" target="_blank"><span class="icon">📄</span> SEBA HSLC Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="https://ahsec.assam.gov.in" target="_blank"><span class="icon">📄</span> AHSEC Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> ADRE Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> SLRC Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                </ul>
+            </div>
+
+            <!-- 2. Central Recruitment -->
+            <div class="admit-card">
+                <h3><i class="fas fa-landmark"></i> Central Recruitment</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> UPSC Civil Services Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> SSC CGL Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> RRB NTPC Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> IBPS PO Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                </ul>
+            </div>
+
+            <!-- 3. Assam Police -->
+            <div class="admit-card">
+                <h3><i class="fas fa-user-shield"></i> Assam Police</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Assam Police Constable Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Assam Police SI Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> APSC CCE Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Assam Police Forester Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                </ul>
+            </div>
+
+            <!-- 4. University -->
+            <div class="admit-card">
+                <h3><i class="fas fa-university"></i> University</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Dibrugarh University Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Gauhati University Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> ASTU Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Assam University Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                </ul>
+            </div>
+
+            <!-- 5. Entrance Exams -->
+            <div class="admit-card">
+                <h3><i class="fas fa-pencil-alt"></i> Entrance Exams</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> CUET Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> JEE Main Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> NEET Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> CEE Assam Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                </ul>
+            </div>
+
+            <!-- 6. Other Important -->
+            <div class="admit-card">
+                <h3><i class="fas fa-link"></i> Other Important</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> DHS Assam Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> India Post GDS Admit Card 2026 <span class="status-badge status-pending">⏳ Pending</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> NFR Admit Card 2026 <span class="status-badge status-available">✅ Available</span></a></li>
+                    <li><a href="#" target="_blank"><span class="icon">📄</span> Employment News Admit Card 2026 <span class="status-badge status-upcoming">📌 Upcoming</span></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ===== DISCLAIMER ===== -->
+        <div class="disclaimer">
+            <i class="fas fa-info-circle" style="color:#facc15; margin-right:10px;"></i>
+            <strong>Disclaimer:</strong> All admit card links are for informational purposes. Please visit the official website for the most accurate information.
+        </div>
+
+    </div>
+</body>
+</html>

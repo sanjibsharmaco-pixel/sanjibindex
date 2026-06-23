@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Jobs - AssamJobs247</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #0b0e1a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .nav {
+    background: rgba(15,12,41,0.95);
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 2px solid #facc15;
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(13px, 1.2vw, 16px);
+    padding: 5px 12px;
+    border-radius: 30px;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  .nav a:hover { background: #facc15; color: #0f0c29; box-shadow: 0 0 20px #facc15; }
+  .nav a i { margin-right: 4px; }
+  .main-content {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .page-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 24px;
+    padding: 35px 30px;
+    border: 1px solid rgba(250,204,21,0.12);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .page-card h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    color: #facc15;
+    border-left: 5px solid #facc15;
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+  .list-modern {
+    list-style: none;
+    padding: 0;
+  }
+  .list-modern li {
+    background: rgba(255,255,255,0.04);
+    padding: 14px 18px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border-left: 4px solid #facc15;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
+  }
+  .list-modern li:hover { background: rgba(250,204,21,0.08); transform: translateX(5px); }
+  .list-modern li i { color: #facc15; font-size: 1.2rem; width: 24px; }
+  .list-modern li a { color: #fff; text-decoration: none; flex: 1; }
+  .list-modern li a:hover { color: #facc15; }
+  .btn-glow {
+    display: inline-block;
+    background: linear-gradient(135deg, #facc15, #f5a623);
+    color: #0f0c29;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(250,204,21,0.3);
+    transition: 0.3s;
+  }
+  .btn-glow:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(250,204,21,0.6); }
+  @media (max-width:600px) {
+    .nav a { font-size: 0.7rem; margin: 2px 4px; padding: 3px 8px; }
+    .page-card { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="/"><i class="fas fa-home"></i> Home</a>
+  <a href="/about.html">About</a>
+  <a href="/admission.html">Admission</a>
+  <a href="/admit-card.html"><i class="fas fa-id-card"></i> Admit Card</a>
+  <a href="/imp-links.html">Imp Links</a>
+  <a href="/private-job.html">Private Job</a>
+  <a href="/result.html"><i class="fas fa-chart-bar"></i> Result</a>
+  <a href="/scholarship.html">Scholarship</a>
+  <a href="/jobs.html" class="active">Jobs</a>
+  <a href="/contact.html">Contact</a>
+</div>
+
+<div class="main-content">
+  <div class="page-card">
+    <h2><i class="fas fa-briefcase" style="margin-right:12px;"></i> Latest Job Openings</h2>
+    <p style="color:#cbd5e1; font-size:clamp(15px,1.3vw,18px); margin-bottom:20px;">Find the latest government and private job vacancies in Assam.</p>
+    <ul class="list-modern">
+      <li><i class="fas fa-newspaper"></i> <a href="#">Assam Teacher Recruitment 2026 – 12,500 Posts</a></li>
+      <li><i class="fas fa-newspaper"></i> <a href="#">Assam Police Constable 2026 – 4,500 Vacancies</a></li>
+      <li><i class="fas fa-newspaper"></i> <a href="#">Forest Guard Recruitment 2026 – 800 Posts</a></li>
+      <li><i class="fas fa-newspaper"></i> <a href="#">Assam Secretariat – Grade IV Job 2026</a></li>
+    </ul>
+    <a href="#" class="btn-glow"><i class="fas fa-eye"></i> View All Jobs</a>
+  </div>
+</div>
+
+</body>
+</html>
