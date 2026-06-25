@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AssamJobs247 – Govt Job Alerts</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', Tahoma, sans-serif; background: #0b0e1a; color:#fff; }
+
+  .topbar {
+    background: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #facc15;
+  }
+  .topbar .brand { font-size:1.4rem; font-weight:bold; }
+  .topbar .brand i { color:#facc15; }
+  .topbar .telegram-btn {
+    background: #1e88e5;
+    padding: 6px 18px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(30,136,229,0.5);
+  }
+  .topbar .telegram-btn:hover { background: #1565c0; transform:scale(1.05); }
+
+  .header {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e, #0f0c29);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 4px solid #facc15;
+  }
+  .header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #facc15, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #facc15);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowGlow 4s linear infinite;
+    display: inline-block;
+    text-shadow: 0 0 30px rgba(250,204,21,0.3);
+  }
+  @keyframes rainbowGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+  .header p {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #facc15;
+    margin-top: 5px;
+  }
+
+  .nav {
+    background: rgba(15,12,41,0.9);
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 2px solid #facc15;
+  }
+  .nav a {
+    color: #fff;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 30px;
+    transition: 0.3s;
+  }
+  .nav a:hover {
+    background: #facc15;
+    color: #0f0c29;
+    box-shadow: 0 0 20px #facc15;
+  }
+
+  .search-wrap {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 20px 0;
+    text-align: center;
+  }
+  .search-box {
+    display: inline-flex;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid #facc15;
+    box-shadow: 0 0 20px rgba(250,204,21,0.3);
+  }
+  .search-box input {
+    flex:1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+  }
+  .search-box input::placeholder { color: #ccc; }
+  .search-box button {
+    background: linear-gradient(135deg, #facc15, #ff6b6b);
+    border: none;
+    padding: 12px 25px;
+    color: #0f0c29;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .search-box button:hover { opacity: 0.8; }
+
+  .slider {
+    position: relative;
+    overflow: hidden;
+    margin: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(250,204,21,0.2);
+  }
+  .slider-track {
+    display: flex;
+    transition: transform 0.8s ease;
+  }
+  .slide {
+    min-width: 100%;
+    padding: 50px 30px;
+    text-align: center;
+    color: #fff;
+  }
+  .slide:nth-child(1) { background: linear-gradient(45deg, #f12711, #f5af19); }
+  .slide:nth-child(2) { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+  .slide:nth-child(3) { background: linear-gradient(45deg, #11998e, #38ef7d); }
+  .slide:nth-child(4) { background: linear-gradient(45deg, #8E2DE2, #4A00E0); }
+  .slide:nth-child(5) { background: linear-gradient(45deg, #f7971e, #ffd200); }
+  .slide:nth-child(6) { background: linear-gradient(45deg, #ee0979, #ff6a00); }
+  .slide h2 { font-size: 2.5rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  .slide p { font-size: 1.2rem; opacity: 0.9; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin: 30px 20px;
+  }
+  .grid a {
+    background: linear-gradient(145deg, #1e1e2f, #2d2d44);
+    padding: 25px 10px;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.4s;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .grid a i { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+  .grid a:nth-child(1) i { color: #f12711; }
+  .grid a:nth-child(2) i { color: #00c6ff; }
+  .grid a:nth-child(3) i { color: #11998e; }
+  .grid a:nth-child(4) i { color: #8E2DE2; }
+  .grid a:nth-child(5) i { color: #f7971e; }
+  .grid a:nth-child(6) i { color: #ee0979; }
+  .grid a:nth-child(7) i { color: #facc15; }
+  .grid a:nth-child(8) i { color: #4ecdc4; }
+  .grid a:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #facc15;
+    box-shadow: 0 0 30px rgba(250,204,21,0.3);
+    background: linear-gradient(145deg, #2d2d44, #1e1e2f);
+  }
+
+  .chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #facc15, #ff6b6b);
+    color: #0f0c29;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 30px rgba(250,204,21,0.6);
+    animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(250,204,21,0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(250,204,21,0); }
+    100% { box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+  }
+  .chatbot-btn:hover { transform: scale(1.1); }
+
+  .chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 380px;
+    max-width: 90%;
+    background: rgba(20,20,40,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    border: 1px solid #facc15;
+    overflow: hidden;
+  }
+  .chat-window.open { display: flex; }
+  .chat-header {
+    background: linear-gradient(135deg, #0f0c29, #302b63);
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #facc15;
+    cursor: grab;
+  }
+  .chat-header .lang-toggle button {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .chat-header .lang-toggle button.active {
+    background: #facc15;
+    color: #0f0c29;
+  }
+  .chat-header .close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  .chat-body {
+    padding: 15px;
+    height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(0,0,0,0.2);
+  }
+  .chat-body .msg {
+    padding: 8px 14px;
+    border-radius: 18px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  .chat-body .bot {
+    background: #2d2d44;
+    color: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-body .user {
+    background: #facc15;
+    color: #0f0c29;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-footer {
+    display: flex;
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid #555;
+  }
+  .chat-footer input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    outline: none;
+  }
+  .chat-footer button {
+    background: #facc15;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    margin-left: 8px;
+    color: #0f0c29;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .chat-footer button:hover { background: #ff6b6b; }
+
+  .footer {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #cbd5e1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+    border-top: 4px solid #facc15;
+    box-shadow: 0 -4px 20px rgba(250,204,21,0.2);
+  }
+  .footer a { color: #facc15; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer .social i {
+    font-size: 1.8rem;
+    margin: 0 10px;
+    color: #fff;
+    transition: 0.3s;
+  }
+  .footer .social i:hover { color: #facc15; transform: scale(1.2); }
+
+  @media (max-width:600px) {
+    .header h1 { font-size: 2.2rem; }
+    .nav a { display: inline-block; margin: 5px; }
+    .slide h2 { font-size: 1.5rem; }
+    .grid { grid-template-columns: repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><i class="fas fa-briefcase"></i> AssamJobs247</div>
+  <div>
+    <span id="date" style="margin-right:15px;"></span>
+    <a href="#" class="telegram-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+  </div>
+</div>
+
+<div class="header">
+  <h1>AssamJobs<span>247</span></h1>
+  <p><i class="fas fa-bullhorn"></i> GOVT JOB ALERTS</p>
+</div>
+
+<div class="nav">
+ <a href="admission.html">Admission</a>
+<a href="admitcard.html">Admit Card</a>
+<a href="implinks.html">Imp Links</a>
+<a href="result.html">Result</a>
+<a href="scholarship.html">Scholarship</a>
+<a href="jobs.html">Jobs</a>
+<a href="contactus.html">Contact</a>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search jobs, admit cards..." />
+    <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+  </div>
+  <div id="searchResults" style="display:none; background:rgba(0,0,0,0.7); border-radius:10px; padding:10px; margin:10px auto; max-width:500px; color:#fff;"></div>
+</div>
+
+<div class="slider" id="slider">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide"><h2>Assam Teacher Recruitment 2026</h2><p>12,500+ vacancies – apply now!</p></div>
+    <div class="slide"><h2>ADRE Grade III & IV Results</h2><p>Expected in July 2026</p></div>
+    <div class="slide"><h2>DHS Assam Grade III Admit Card</h2><p>Download now!</p></div>
+    <div class="slide"><h2>National Scholarship Portal 2026</h2><p>Apply by 15 July</p></div>
+    <div class="slide"><h2>Top MNCs Hiring in Assam</h2><p>Walk-in interviews</p></div>
+    <div class="slide"><h2>Engineering & Medical Admissions</h2><p>Assam CEE & NEET counselling</p></div>
+  </div>
+</div>
+
+<div class="grid">
+  <a href="admission.html"><i class="fas fa-graduation-cap"></i> Admission</a>
+  <a href="#admit-card"><i class="fas fa-id-card"></i> Admit Card</a>
+  <a href="#imp-links"><i class="fas fa-link"></i> Imp Links</a>
+  <a href="#private-job"><i class="fas fa-building"></i> Private Job</a>
+  <a href="/result.html"><i class="fas fa-chart-bar"></i> Result</a>
+  <a href="#scholarship"><i class="fas fa-hand-holding-heart"></i> Scholarship</a>
+  <a href="#jobs"><i class="fas fa-briefcase"></i> Jobs</a>
+  <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+</div>
+
+<button class="chatbot-btn" id="chatToggle"><i class="fas fa-robot"></i></button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header" id="chatHeader">
+    <div>
+      <span>🤖 AI Job Advisor</span>
+      <span class="lang-toggle">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="as">অসমীয়া</button>
+      </span>
+    </div>
+    <button class="close-btn" id="closeChat">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">Namaste! I'm your AI Job Advisor 🤖. Ask me about govt jobs, admit cards, results, etc.</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Type your question..." />
+    <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="social">
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
+  <p>&copy; 2026 <strong style="color:#facc15;">AssamJobs247</strong> – Your trusted job alert portal.</p>
+  <p style="font-size:0.8rem;"><i class="fas fa-envelope"></i> support@assamjobs247.in &nbsp;|&nbsp; <i class="fas fa-phone"></i> +91 70000 00000</p>
+  <p style="font-size:0.7rem; opacity:0.6;">Privacy Policy | Terms | Disclaimer</p>
+</div>
+
+<script>
+  document.getElementById('date').innerHTML = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+  const track = document.getElementById('sliderTrack');
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % 6;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }, 5000);
+
+  document.getElementById('searchBtn').addEventListener('click', function() {
+    const val = document.getElementById('searchInput').value.trim();
+    const res = document.getElementById('searchResults');
+    if (val) {
+      res.innerHTML = '🔍 Showing results for "<strong>' + val + '</strong>" (demo)';
+      res.style.display = 'block';
+    } else {
+      res.style.display = 'none';
+    }
+  });
+
+  const chatToggle = document.getElementById('chatToggle');
+  const chatWindow = document.getElementById('chatWindow');
+  chatToggle.addEventListener('click', () => chatWindow.classList.toggle('open'));
+  document.getElementById('closeChat').addEventListener('click', () => chatWindow.classList.remove('open'));
+
+  let currentLang = 'en';
+  const langBtns = document.querySelectorAll('.lang-toggle button');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      langBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentLang = this.dataset.lang;
+      const welcome = document.querySelector('.chat-body .bot');
+      if (currentLang === 'en') {
+        welcome.textContent = 'Namaste! I\'m your AI Job Advisor 🤖. Ask me about govt jobs, admit cards, results, etc.';
+      } else {
+        welcome.textContent = 'নমস্কাৰ! মই আপোনাৰ AI চাকৰি পৰামৰ্শদাতা 🤖। চৰকাৰী চাকৰি, এডমিট কার্ড, ফলাফল সম্পর্কে সুধিব পাৰে।';
+      }
+    });
+  });
+
+  document.getElementById('chatSend').addEventListener('click', function() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const body = document.getElementById('chatBody');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'msg user';
+    userDiv.textContent = msg;
+    body.appendChild(userDiv);
+    input.value = '';
+    body.scrollTop = body.scrollHeight;
+    setTimeout(() => {
+      const botDiv = document.createElement('div');
+      botDiv.className = 'msg bot';
+      if (currentLang === 'en') {
+        botDiv.textContent = 'Thanks for your question! I will get back to you shortly. (Demo)';
+      } else {
+        botDiv.textContent = 'আপোনাৰ প্ৰশ্নৰ বাবে ধন্যবাদ! মই সোনকালে উত্তৰ দিম। (ডেমো)';
+      }
+      body.appendChild(botDiv);
+      body.scrollTop = body.scrollHeight;
+    }, 800);
+  });
+
+  document.getElementById('chatInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') document.getElementById('chatSend').click();
+  });
+</script>
+
+</body>
+</html>
