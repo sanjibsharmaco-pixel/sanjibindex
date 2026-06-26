@@ -19,15 +19,47 @@
             color: #fff;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            flex-direction: column;
         }
 
+        /* ===== NAVIGATION (same as Admission page) ===== */
+        .nav {
+            background: rgba(15, 12, 41, 0.95);
+            padding: 14px 20px;
+            text-align: center;
+            border-bottom: 2px solid #facc15;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(13px, 1.2vw, 16px);
+            padding: 5px 12px;
+            border-radius: 30px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .nav a:hover {
+            background: #facc15;
+            color: #0f0c29;
+            box-shadow: 0 0 20px #facc15;
+        }
+        .nav a i {
+            margin-right: 4px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
         .main-content {
+            flex: 1;
             width: 100%;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         /* ===== PAGE TITLE ===== */
@@ -228,6 +260,22 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== NAVIGATION MENU (added now) ===== -->
+    <div class="nav">
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/about.html">About</a>
+        <a href="/admission.html">Admission</a>
+        <a href="/admitcard.html" style="background:#facc15;color:#0f0c29;"><i class="fas fa-id-card"></i> Admit Card</a>
+        <a href="/implinks.html">Imp Links</a>
+        <a href="/privatejob.html">Private Job</a>
+        <a href="/result.html"><i class="fas fa-chart-bar"></i> Result</a>
+        <a href="/scholarship.html">Scholarship</a>
+        <a href="/jobs.html">Jobs</a>
+        <a href="/contactus.html">Contact</a>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="main-content">
 
         <!-- ===== PAGE TITLE ===== -->
