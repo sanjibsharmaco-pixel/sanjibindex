@@ -69,12 +69,13 @@
   }
   .nav a {
     color: #fff;
-    margin: 0 12px;
+    margin: 0 10px;
     text-decoration: none;
     font-weight: 600;
     padding: 5px 10px;
     border-radius: 30px;
     transition: 0.3s;
+    display: inline-block;
   }
   .nav a:hover {
     background: #facc15;
@@ -117,6 +118,7 @@
   }
   .search-box button:hover { opacity: 0.8; }
 
+  /* ===== SLIDER – 6 इमेज (लिंक के साथ) ===== */
   .slider {
     position: relative;
     overflow: hidden;
@@ -130,19 +132,20 @@
   }
   .slide {
     min-width: 100%;
-    padding: 50px 30px;
     text-align: center;
-    color: #fff;
   }
-  .slide:nth-child(1) { background: linear-gradient(45deg, #f12711, #f5af19); }
-  .slide:nth-child(2) { background: linear-gradient(45deg, #00c6ff, #0072ff); }
-  .slide:nth-child(3) { background: linear-gradient(45deg, #11998e, #38ef7d); }
-  .slide:nth-child(4) { background: linear-gradient(45deg, #8E2DE2, #4A00E0); }
-  .slide:nth-child(5) { background: linear-gradient(45deg, #f7971e, #ffd200); }
-  .slide:nth-child(6) { background: linear-gradient(45deg, #ee0979, #ff6a00); }
-  .slide h2 { font-size: 2.5rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-  .slide p { font-size: 1.2rem; opacity: 0.9; }
+  .slide a {
+    display: block;
+    width: 100%;
+  }
+  .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+  }
 
+  /* ===== GRID ===== */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -160,6 +163,7 @@
     transition: 0.4s;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: block;
   }
   .grid a i { font-size: 2.5rem; display: block; margin-bottom: 10px; }
   .grid a:nth-child(1) i { color: #f12711; }
@@ -175,6 +179,16 @@
     border-color: #facc15;
     box-shadow: 0 0 30px rgba(250,204,21,0.3);
     background: linear-gradient(145deg, #2d2d44, #1e1e2f);
+  }
+
+  /* सर्च फ़िल्टर */
+  .grid a.hidden-link { display: none; }
+  .no-result {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 1.2rem;
   }
 
   .chatbot-btn {
@@ -325,8 +339,8 @@
   @media (max-width:600px) {
     .header h1 { font-size: 2.2rem; }
     .nav a { display: inline-block; margin: 5px; }
-    .slide h2 { font-size: 1.5rem; }
     .grid { grid-template-columns: repeat(2,1fr); }
+    .slider { margin: 20px 10px; }
   }
 </style>
 </head>
@@ -345,44 +359,49 @@
   <p><i class="fas fa-bullhorn"></i> GOVT JOB ALERTS</p>
 </div>
 
+<!-- ===== NAVIGATION – सभी लिंक सही .html पेजों पर ===== -->
 <div class="nav">
- <a href="admission.html">Admission</a>
-<a href="admitcard.html">Admit Card</a>
-<a href="implinks.html">Imp Links</a>
-<a href="result.html">Result</a>
-<a href="scholarship.html">Scholarship</a>
-<a href="jobs.html">Jobs</a>
-<a href="contactus.html">Contact</a>
+  <a href="/"><i class="fas fa-home"></i> Home</a>
+  <a href="/about.html">About</a>                <!-- about.html -->
+  <a href="/admission.html">Admission</a>        <!-- admission.html -->
+  <a href="/admitcard.html">Admit Card</a>       <!-- admitcard.html -->
+  <a href="/implinks.html">Imp Links</a>         <!-- implinks.html -->
+  <a href="/private-job.html">Private Job</a>    <!-- private-job.html (create this file) -->
+  <a href="/result.html"><i class="fas fa-chart-bar"></i> Result</a>   <!-- result.html -->
+  <a href="/scholarship.html">Scholarship</a>    <!-- scholarship.html -->
+  <a href="/jobs.html">Jobs</a>                  <!-- jobs.html -->
+  <a href="/contactus.html">Contact</a>          <!-- contactus.html -->
 </div>
 
 <div class="search-wrap">
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search jobs, admit cards..." />
+    <input type="text" id="searchInput" placeholder="Search jobs, admit cards, results..." />
     <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
   </div>
-  <div id="searchResults" style="display:none; background:rgba(0,0,0,0.7); border-radius:10px; padding:10px; margin:10px auto; max-width:500px; color:#fff;"></div>
 </div>
 
+<!-- ===== SLIDER – 6 इमेज (अपनी इमेज के नाम डालें) ===== -->
 <div class="slider" id="slider">
   <div class="slider-track" id="sliderTrack">
-    <div class="slide"><h2>Assam Teacher Recruitment 2026</h2><p>12,500+ vacancies – apply now!</p></div>
-    <div class="slide"><h2>ADRE Grade III & IV Results</h2><p>Expected in July 2026</p></div>
-    <div class="slide"><h2>DHS Assam Grade III Admit Card</h2><p>Download now!</p></div>
-    <div class="slide"><h2>National Scholarship Portal 2026</h2><p>Apply by 15 July</p></div>
-    <div class="slide"><h2>Top MNCs Hiring in Assam</h2><p>Walk-in interviews</p></div>
-    <div class="slide"><h2>Engineering & Medical Admissions</h2><p>Assam CEE & NEET counselling</p></div>
+    <div class="slide"><a href="#" target="_blank"><img src="police.png" alt="Police Recruitment"></a></div>
+    <div class="slide"><a href="#" target="_blank"><img src="teacher.png" alt="Teacher Recruitment"></a></div>
+    <div class="slide"><a href="#" target="_blank"><img src="by-owner.png" alt="By Owner Jobs"></a></div>
+    <div class="slide"><a href="#" target="_blank"><img src="slide4.png" alt="Slide 4"></a></div>
+    <div class="slide"><a href="#" target="_blank"><img src="slide5.png" alt="Slide 5"></a></div>
+    <div class="slide"><a href="#" target="_blank"><img src="slide6.png" alt="Slide 6"></a></div>
   </div>
 </div>
 
-<div class="grid">
-  <a href="admission.html"><i class="fas fa-graduation-cap"></i> Admission</a>
-  <a href="#admit-card"><i class="fas fa-id-card"></i> Admit Card</a>
-  <a href="#imp-links"><i class="fas fa-link"></i> Imp Links</a>
-  <a href="#private-job"><i class="fas fa-building"></i> Private Job</a>
+<!-- ===== QUICK LINKS (ग्रिड) – सभी लिंक सही .html पेजों पर ===== -->
+<div class="grid" id="gridContainer">
+  <a href="/admission.html"><i class="fas fa-graduation-cap"></i> Admission</a>
+  <a href="/admitcard.html"><i class="fas fa-id-card"></i> Admit Card</a>
+  <a href="/implinks.html"><i class="fas fa-link"></i> Imp Links</a>
+  <a href="/private-job.html"><i class="fas fa-building"></i> Private Job</a>
   <a href="/result.html"><i class="fas fa-chart-bar"></i> Result</a>
-  <a href="#scholarship"><i class="fas fa-hand-holding-heart"></i> Scholarship</a>
-  <a href="#jobs"><i class="fas fa-briefcase"></i> Jobs</a>
-  <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+  <a href="/scholarship.html"><i class="fas fa-hand-holding-heart"></i> Scholarship</a>
+  <a href="/jobs.html"><i class="fas fa-briefcase"></i> Jobs</a>
+  <a href="/contactus.html"><i class="fas fa-envelope"></i> Contact</a>
 </div>
 
 <button class="chatbot-btn" id="chatToggle"><i class="fas fa-robot"></i></button>
@@ -419,31 +438,64 @@
 </div>
 
 <script>
+  // ===== DATE =====
   document.getElementById('date').innerHTML = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
+  // ===== SLIDER AUTO – 6 स्लाइड =====
   const track = document.getElementById('sliderTrack');
   let index = 0;
+  const slides = track.querySelectorAll('.slide');
+  const totalSlides = slides.length;
   setInterval(() => {
-    index = (index + 1) % 6;
+    index = (index + 1) % totalSlides;
     track.style.transform = `translateX(-${index * 100}%)`;
   }, 5000);
 
-  document.getElementById('searchBtn').addEventListener('click', function() {
-    const val = document.getElementById('searchInput').value.trim();
-    const res = document.getElementById('searchResults');
-    if (val) {
-      res.innerHTML = '🔍 Showing results for "<strong>' + val + '</strong>" (demo)';
-      res.style.display = 'block';
+  // ===== SEARCH – लाइव फ़िल्टर =====
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const gridItems = document.querySelectorAll('.grid a');
+  const gridContainer = document.getElementById('gridContainer');
+
+  function filterLinks() {
+    const query = searchInput.value.trim().toLowerCase();
+    let found = false;
+    gridItems.forEach(link => {
+      const text = link.textContent.trim().toLowerCase();
+      if (text.includes(query) || query === '') {
+        link.classList.remove('hidden-link');
+        found = true;
+      } else {
+        link.classList.add('hidden-link');
+      }
+    });
+    let noResult = gridContainer.querySelector('.no-result');
+    if (!found && query !== '') {
+      if (!noResult) {
+        noResult = document.createElement('div');
+        noResult.className = 'no-result';
+        noResult.textContent = '🔍 No results found for "' + searchInput.value.trim() + '"';
+        gridContainer.appendChild(noResult);
+      } else {
+        noResult.textContent = '🔍 No results found for "' + searchInput.value.trim() + '"';
+      }
     } else {
-      res.style.display = 'none';
+      if (noResult) noResult.remove();
     }
+  }
+  searchInput.addEventListener('input', filterLinks);
+  searchBtn.addEventListener('click', filterLinks);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') filterLinks();
   });
 
+  // ===== CHATBOT TOGGLE =====
   const chatToggle = document.getElementById('chatToggle');
   const chatWindow = document.getElementById('chatWindow');
   chatToggle.addEventListener('click', () => chatWindow.classList.toggle('open'));
   document.getElementById('closeChat').addEventListener('click', () => chatWindow.classList.remove('open'));
 
+  // ===== LANGUAGE TOGGLE =====
   let currentLang = 'en';
   const langBtns = document.querySelectorAll('.lang-toggle button');
   langBtns.forEach(btn => {
@@ -460,6 +512,7 @@
     });
   });
 
+  // ===== CHAT SEND =====
   document.getElementById('chatSend').addEventListener('click', function() {
     const input = document.getElementById('chatInput');
     const msg = input.value.trim();
@@ -483,7 +536,6 @@
       body.scrollTop = body.scrollHeight;
     }, 800);
   });
-
   document.getElementById('chatInput').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') document.getElementById('chatSend').click();
   });
